@@ -1,0 +1,71 @@
+<div class="create-stock-form">
+  <h1>Create New Stock</h1>
+
+  <div class="stock-card form-card">
+    <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+      <div class="form-group">
+        <label for="stock-name">Stock Name:</label>
+        <input
+          type="text"
+          id="stock-name"
+          name="stock-name"
+          placeholder="e.g. Apple Inc"
+          required
+          [(ngModel)]="stock.name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="stock-code">Stock Code:</label>
+        <input
+          type="text"
+          id="stock-code"
+          name="stock-code"
+          placeholder="e.g. AAPL"
+          required
+          [(ngModel)]="stock.code"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="stock-price">Stock Price:</label>
+        <input
+          type="text"
+          id="stock-price"
+          name="stock-price"
+          placeholder="e.g. 150"
+          required
+          [(ngModel)]="stock.price"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="stock-previous-price">Stock Previous Price:</label>
+        <input
+          type="text"
+          id="stock-previous-price"
+          name="stock-previous-price"
+          placeholder="e.g. 145"
+          required
+          [(ngModel)]="stock.previousPrice"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exchange">Exchange:</label>
+        <select name="exchange" id="exchange" [(ngModel)]="stock.exchange">
+          @for (ex of exchanges; track $index) {
+            <option [value]="ex">{{ ex }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" />
+        <label for="">I confirm that the information provided above is accurate!</label>
+      </div>
+
+      <button type="submit">Create</button>
+    </form>
+  </div>
+</div>

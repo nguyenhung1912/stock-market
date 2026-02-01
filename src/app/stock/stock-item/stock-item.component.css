@@ -3,20 +3,69 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+
+.stock-container h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .stock-card {
-  border: 2px solid var(--primary);
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 350px;
   background-color: var(--secondary);
+  border: 3px solid var(--primary);
+  box-shadow: var(--shadow);
+  padding: 25px;
   text-align: center;
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.stock-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px var(--primary);
+}
+
+.stock-card button {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+}
+
+.stock-card button.selected {
+  background-color: #ff5e5b;
+  color: #ffffff;
+  transform: translate(2px, 2px);
+}
+
+.stock-card button.selected:hover {
+  background-color: #ff5e5b;
+}
+
+.stock-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .stock-price {
-  font-size: 1.5rem;
+  font-size: 1.2em;
   font-weight: bold;
   margin: 10px 0;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
 }
