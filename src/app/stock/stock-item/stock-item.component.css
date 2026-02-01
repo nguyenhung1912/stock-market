@@ -1,0 +1,22 @@
+.stock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.stock-card {
+  border: 2px solid var(--primary);
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+  background-color: var(--secondary);
+  text-align: center;
+}
+
+.stock-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
