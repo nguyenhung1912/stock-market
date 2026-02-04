@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Stock } from '../../model/stock';
 
 @Component({
@@ -12,19 +12,31 @@ import { Stock } from '../../model/stock';
 export class CreateStock {
   public stock!: Stock;
   public confirmed = false;
-  public exchanges =['AMEX', 'NASDAQ', 'NYSE'];
+  public exchanges = ['AMEX', 'NASDAQ', 'NYSE'];
+  public stockList: Stock[] = [];
 
   constructor() {
-    this.stock = new Stock('', '', 0, 0, '');
+    this.stock = new Stock('', '', 0, 0, false, '');
   }
 
-  createStock(stockForm: any) {
-    console.log('Stock form', stockForm);
-    if (stockForm.valid) {
-      this.confirmed = true;
-      console.log('Creating stock: ', this.stock);
-    } else {
-      console.error('Stock form is in an invalid state');
+  createStock(stockForm: NgForm) {
+    if (stockForm.valid && this.confirmed) {
+      this.stockList.push(
+        new Stock(
+          this.stock.name,
+          this.stock.code,
+          this.stock.price,
+          this.stock.previousPrice,
+          this.stock.favorite,
+          this.stock.exchange,
+        ),
+      );
+
+      this.stock = new Stock('', '', 0, 0, false, 'NASDAQ');
+      this.stockList.push(new Stock('Apple Inc', 'AAPL', 150, 140, true, 'NASDAQ'));
+      this.stockList.push(new Stock('Google', 'GOOG', 200, 210, false, 'NYSE'));
+      this.confirmed = false;
+      stockForm.resetForm();
     }
   }
 }

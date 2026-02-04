@@ -13,7 +13,7 @@ export class StockItemComponent implements OnInit{
     constructor() {}
     
     ngOnInit(): void {
-        this.stock = new Stock('Test Stock Company', 'TSC', 85, 80, 'NASDAQ');
+        this.stock = new Stock('Test Stock Company', 'TSC', 85, 80, false, 'NASDAQ');
     }
 
     toggleFavorite(event: any) {

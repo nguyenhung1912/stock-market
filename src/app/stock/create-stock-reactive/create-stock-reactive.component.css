@@ -1,0 +1,66 @@
+.form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-control.invalid {
+  border-color: red;
+  background-color: #fff0f0;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.debug-info {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.btn-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: white;
+}
+
+.btn-submit {
+  background-color: #a4a2a2;
+}
+
+.btn-create {
+  background-color: #44d265;
+}
+
+.stock-item {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}

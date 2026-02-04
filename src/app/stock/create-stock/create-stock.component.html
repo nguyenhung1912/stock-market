@@ -9,9 +9,12 @@
           type="text"
           id="stock-name"
           name="stock-name"
-          placeholder="e.g. Apple Inc"
           required
           [(ngModel)]="stock.name"
+          #stockName="ngModel"
+          [class.valid-field]="stockName.valid"
+          [class.invalid-field]="stockName.invalid && stockName.dirty"
+          placeholder="e.g. Apple Inc"
         />
       </div>
 
@@ -21,9 +24,12 @@
           type="text"
           id="stock-code"
           name="stock-code"
-          placeholder="e.g. AAPL"
           required
           [(ngModel)]="stock.code"
+          #stockCode="ngModel"
+          [class.valid-field]="stockCode.pristine"
+          [class.invalid-field]="stockCode.dirty"
+          placeholder="e.g. AAPL"
         />
       </div>
 
@@ -33,9 +39,12 @@
           type="text"
           id="stock-price"
           name="stock-price"
-          placeholder="e.g. 150"
           required
           [(ngModel)]="stock.price"
+          #stockPrice="ngModel"
+          [class.valid-field]="stockPrice.untouched"
+          [class.invalid-field]="stockPrice.touched"
+          placeholder="e.g. 150"
         />
       </div>
 
@@ -61,13 +70,30 @@
       </div>
 
       <div class="form-group checkbox-group">
-        <input type="checkbox" id="confirm-checkbox" />
+        <input type="checkbox" id="confirm-checkbox" name="confirmed" [(ngModel)]="confirmed" />
         <label for="confirm-checkbox"
           >I confirm that the information provided above is accurate!</label
         >
       </div>
 
-      <button type="submit">Create</button>
+      <button type="submit" [disabled]="!stockForm.valid || !confirmed">Create</button>
     </form>
+  </div>
+
+  <div class="stock-list" *ngIf="stockList.length > 0">
+    <h2>Stock List</h2>
+    <div class="stock-item" *ngFor="let stockItem of stockList">
+      <div class="stock-info">
+        <h3>{{ stockItem.name }} ({{ stockItem.code }})</h3>
+        <p>Price: ${{ stockItem.price }}</p>
+        <p>Previous Price: ${{ stockItem.previousPrice }}</p>
+        <p>Exchange: {{ stockItem.exchange }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="debug-info">
+    <p><strong>Stock Name is:</strong> {{ stock | json }}</p>
+    <p><strong>Data has been confirmed:</strong> {{ confirmed }}</p>
   </div>
 </div>

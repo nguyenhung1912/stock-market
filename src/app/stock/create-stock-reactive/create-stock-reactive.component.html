@@ -1,0 +1,71 @@
+<div class="form-container">
+  <h2>Create Stock Form</h2>
+
+  <form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        [class.invalid]="stockForm.get('name')?.invalid && stockForm.get('name')?.touched"
+      />
+
+      <div
+        *ngIf="stockForm.get('name')?.invalid && stockForm.get('name')?.touched"
+        class="error-msg"
+      >
+        Name is required (min 2 chars)
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Stock Code</label>
+      <input
+        type="text"
+        formControlName="code"
+        class="form-control"
+        [class.invalid]="stockForm.get('code')?.invalid && stockForm.get('code')?.touched"
+      />
+      <div
+        *ngIf="stockForm.get('code')?.invalid && stockForm.get('code')?.touched"
+        class="error-msg"
+      >
+        Code is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Stock Price</label>
+      <input
+        type="number"
+        formControlName="price"
+        class="form-control"
+        [class.invalid]="stockForm.get('price')?.invalid && stockForm.get('price')?.touched"
+      />
+      <div
+        *ngIf="stockForm.get('price')?.invalid && stockForm.get('price')?.touched"
+        class="error-msg"
+      >
+        Price must be >= 0
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn-submit">Submit</button>
+      <button type="button" class="btn-create" (click)="onCreate()">Create Stock</button>
+    </div>
+  </form>
+
+  <div class="debug-info">
+    <p><strong>Form Control value:</strong> {{ stockForm.value | json }}</p>
+    <p><strong>Form Control status:</strong> {{ stockForm.status }}</p>
+  </div>
+
+  <div class="stock-list" *ngIf="stockList.length > 0">
+    <h3>Stock List</h3>
+    <div *ngFor="let item of stockList" class="stock-item">
+      {{ item.name }} ({{ item.code }}) - ${{ item.price }}
+    </div>
+  </div>
+</div>

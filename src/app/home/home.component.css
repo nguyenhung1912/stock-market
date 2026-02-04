@@ -1,0 +1,9 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+}
